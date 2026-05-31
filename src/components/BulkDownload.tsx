@@ -44,7 +44,7 @@ export default function BulkDownload({ pages, bookInfo }: Props) {
   }
 
   return (
-    <Button variant="outline" onClick={handleDownloadAll}>
+    <Button variant="outline" onClick={handleDownloadAll} fullWidth>
       Download All ({pages.length} images as ZIP)
     </Button>
   )

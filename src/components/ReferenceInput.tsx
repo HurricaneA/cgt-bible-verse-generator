@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Group, Select, Button, Loader } from '@mantine/core'
+import { Stack, SimpleGrid, Select, Button, Loader } from '@mantine/core'
 import { tamilBookNames } from '../lib/bible-data'
 import { getBookChapterNums, getChapterVerseNums } from '../lib/lookup-verses'
 
@@ -72,63 +72,57 @@ export default function ReferenceInput({ onGenerate, disabled }: Props) {
       : null
 
   return (
-    <Group align="flex-end" gap="sm" wrap="wrap" justify="center">
+    <Stack w="100%" gap="sm">
       <Select
         label="Book"
         placeholder="Select book"
         data={BOOK_OPTIONS}
         searchable
         value={book}
-        onChange={(val) => {
-          setBook(val)
-        }}
+        onChange={setBook}
         disabled={disabled}
-        w={200}
       />
-      <Select
-        label="Chapter"
-        placeholder={loadingChapters ? 'Loading…' : 'Select'}
-        data={chapterNums}
-        value={chapter}
-        onChange={(val) => {
-          setChapter(val)
-        }}
-        disabled={disabled || chapterNums.length === 0}
-        rightSection={loadingChapters ? <Loader size="xs" /> : undefined}
-        w={120}
-      />
-      <Select
-        label="From verse"
-        placeholder={loadingVerses ? 'Loading…' : 'Select'}
-        data={verseNums}
-        value={startVerse}
-        onChange={(v) => {
-          setStartVerse(v)
-          if (endVerse && v && parseInt(endVerse) < parseInt(v)) setEndVerse(null)
-        }}
-        disabled={disabled || verseNums.length === 0}
-        rightSection={loadingVerses ? <Loader size="xs" /> : undefined}
-        w={130}
-      />
-      <Select
-        label="To verse"
-        placeholder="optional"
-        data={endVerseOptions}
-        value={endVerse}
-        onChange={setEndVerse}
-        disabled={disabled || !startVerse}
-        error={endVerseError}
-        clearable
-        w={130}
-      />
+      <SimpleGrid cols={{ base: 1, xs: 3 }} spacing="sm">
+        <Select
+          label="Chapter"
+          placeholder={loadingChapters ? 'Loading…' : 'Select'}
+          data={chapterNums}
+          value={chapter}
+          onChange={setChapter}
+          disabled={disabled || chapterNums.length === 0}
+          rightSection={loadingChapters ? <Loader size="xs" /> : undefined}
+        />
+        <Select
+          label="From verse"
+          placeholder={loadingVerses ? 'Loading…' : 'Select'}
+          data={verseNums}
+          value={startVerse}
+          onChange={(v) => {
+            setStartVerse(v)
+            if (endVerse && v && parseInt(endVerse) < parseInt(v)) setEndVerse(null)
+          }}
+          disabled={disabled || verseNums.length === 0}
+          rightSection={loadingVerses ? <Loader size="xs" /> : undefined}
+        />
+        <Select
+          label="To verse"
+          placeholder="optional"
+          data={endVerseOptions}
+          value={endVerse}
+          onChange={setEndVerse}
+          disabled={disabled || !startVerse}
+          error={endVerseError}
+          clearable
+        />
+      </SimpleGrid>
       <Button
         onClick={handleGenerate}
         disabled={!canGenerate}
         loading={disabled}
-        size="md"
+        fullWidth
       >
         Generate
       </Button>
-    </Group>
+    </Stack>
   )
 }

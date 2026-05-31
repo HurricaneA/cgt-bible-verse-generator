@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Paper, Group, Button, Text } from '@mantine/core'
+import { Paper, SimpleGrid, Button, Text } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
 import type { GeneratedPage } from '../types'
 
@@ -56,14 +56,14 @@ export default function ImageCard({ page, index, total }: Props) {
         </Text>
       )}
       <div ref={wrapperRef} />
-      <Group mt="sm" gap="xs">
+      <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="xs" mt="sm">
         <Button variant="filled" onClick={handleDownload}>
           {total > 1 ? `Download ${index + 1}` : 'Download PNG'}
         </Button>
         <Button variant="light" onClick={handleCopy}>
           Copy to Clipboard
         </Button>
-      </Group>
+      </SimpleGrid>
     </Paper>
   )
 }
