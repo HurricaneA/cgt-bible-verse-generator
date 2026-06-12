@@ -8,6 +8,8 @@ export const CONFIG = {
   marginBottom: 80,
   marginLeft: 180,
   marginRight: 180,
+  titleMarginLeft: 280,   // title sits more inward than verse text
+  titleMarginRight: 280,
   titleFontPt: 12,       // 300 DPI → ~50px
   verseFontPt: 17,       // 300 DPI → ~71px (slightly reduced to fit 8 lines)
 } as const

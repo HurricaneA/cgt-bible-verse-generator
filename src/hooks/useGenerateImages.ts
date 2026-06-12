@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { tamilBookNames } from '../lib/bible-data'
+import { tamilBookNames, tamilBookNamesLegacy } from '../lib/bible-data'
 import { lookupVerses } from '../lib/lookup-verses'
 import { createPages } from '../lib/canvas'
 import type { BookInfo, GenerateState } from '../types'
@@ -54,7 +54,10 @@ export function useGenerateImages() {
       return
     }
 
-    const tamilBook = tamilBookNames[englishBook]!
+    // Legacy (Tharmini-encoded) name for the canvas title, which renders in
+    // the Tharmini font. The Unicode tamilBookNames map is still used for the
+    // dropdown UI and validation above.
+    const tamilBook = tamilBookNamesLegacy[englishBook]!
     const bookInfo: BookInfo = { englishBook, tamilBook, chapter, startVerse, endVerse }
 
     setState({ status: 'fetching', error: null, pages: [], bookInfo: null })
@@ -91,7 +94,14 @@ export function useGenerateImages() {
     }
 
     setState((s) => ({ ...s, status: 'rendering' }))
-    await document.fonts.ready
+
+    // Explicitly load Tharmini — document.fonts.ready only waits for fonts
+    // already used in the DOM; since Tharmini never appears in HTML we must
+    // trigger the fetch manually before the canvas tries to use it.
+    await Promise.all([
+      document.fonts.load(`bold 71px 'Tharmini'`),
+      document.fonts.load(`bold 50px 'Tharmini'`),
+    ])
 
     const pages = createPages(verses, bookInfo)
     setState({ status: 'done', error: null, pages, bookInfo })

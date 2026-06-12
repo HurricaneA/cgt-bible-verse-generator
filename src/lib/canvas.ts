@@ -9,6 +9,8 @@ import {
 import type { VerseData, BookInfo, GeneratedPage } from '../types'
 
 const MIN_VERSE_PX = 36
+const TAMIL_FONT = `'Tharmini', sans-serif`
+const ENGLISH_FONT = `'Roboto', sans-serif`
 
 function wrapText(
   text: string,
@@ -36,7 +38,7 @@ function paginateVerses(
   ctx: CanvasRenderingContext2D,
   maxTextWidth: number,
 ): VerseData[][] {
-  ctx.font = `bold ${VERSE_PX}px 'Noto Sans Tamil', sans-serif`
+  ctx.font = `bold ${VERSE_PX}px ${TAMIL_FONT}`
   const lineH = Math.round(VERSE_PX * 1.5)
   const verseGap = Math.round(VERSE_PX * 0.5)
   const pages: VerseData[][] = []
@@ -68,7 +70,7 @@ function computePageFontPx(
   for (let fontPx = VERSE_PX; fontPx >= MIN_VERSE_PX; fontPx -= 2) {
     const lineH = Math.round(fontPx * 1.5)
     const verseGap = Math.round(fontPx * 0.5)
-    ctx.font = `bold ${fontPx}px 'Noto Sans Tamil', sans-serif`
+    ctx.font = `bold ${fontPx}px ${TAMIL_FONT}`
     let h = 0
     for (const v of verses) {
       h += wrapText(`${v.verse}. ${v.text}`, maxW, ctx).length * lineH + verseGap
@@ -103,7 +105,7 @@ function renderCanvas(
   ctx.fillStyle = '#000'
   ctx.fillRect(0, 0, canvasWidth, canvasHeight)
 
-  // Separator
+  // Separator — spans the verse text area width
   ctx.strokeStyle = 'rgba(255,255,255,0.35)'
   ctx.lineWidth = 1
   ctx.beginPath()
@@ -111,25 +113,26 @@ function renderCanvas(
   ctx.lineTo(canvasWidth - CONFIG.marginRight, SEP_Y)
   ctx.stroke()
 
-  // Title: Tamil left, English right — bold
+  // Title: Tamil left, English right — inset further than verse text
   ctx.fillStyle = '#fff'
   ctx.textAlign = 'left'
-  ctx.font = `bold ${TITLE_PX}px 'Noto Sans Tamil', sans-serif`
+  ctx.wordSpacing = '6px'
+  ctx.font = `bold ${TITLE_PX}px ${TAMIL_FONT}`
   ctx.fillText(
     `${bookInfo.tamilBook} ${bookInfo.chapter}:${verseRange}`,
-    CONFIG.marginLeft,
+    CONFIG.titleMarginLeft,
     CONFIG.titleBaselineY,
   )
-  ctx.font = `bold ${TITLE_PX}px 'Roboto', sans-serif`
+  ctx.font = `bold ${TITLE_PX}px ${ENGLISH_FONT}`
   const engTitle = `${bookInfo.englishBook} ${bookInfo.chapter}:${verseRange}`
   ctx.fillText(
     engTitle,
-    canvasWidth - CONFIG.marginRight - ctx.measureText(engTitle).width,
+    canvasWidth - CONFIG.titleMarginRight - ctx.measureText(engTitle).width,
     CONFIG.titleBaselineY,
   )
 
   // Measure verse block height for vertical centering
-  ctx.font = `bold ${fontPx}px 'Noto Sans Tamil', sans-serif`
+  ctx.font = `bold ${fontPx}px ${TAMIL_FONT}`
   let blockH = 0
   for (const v of verses) {
     blockH += wrapText(`${v.verse}. ${v.text}`, maxW, ctx).length * lineH + verseGap
@@ -141,6 +144,7 @@ function renderCanvas(
   // Draw verses — bold, centered
   ctx.fillStyle = '#fff'
   ctx.textAlign = 'center'
+  ctx.wordSpacing = '8px'
   for (const v of verses) {
     const lines = wrapText(`${v.verse}. ${v.text}`, maxW, ctx)
     for (const line of lines) {
@@ -153,11 +157,12 @@ function renderCanvas(
   // Page indicator
   if (totalPages > 1) {
     ctx.textAlign = 'right'
-    ctx.font = `bold ${TITLE_PX}px 'Roboto', sans-serif`
+    ctx.wordSpacing = '0px'
+    ctx.font = `bold ${TITLE_PX}px ${ENGLISH_FONT}`
     ctx.fillStyle = 'rgba(255,255,255,0.45)'
     ctx.fillText(
       `${page} / ${totalPages}`,
-      canvasWidth - CONFIG.marginRight,
+      canvasWidth - CONFIG.titleMarginRight,
       canvasHeight - 40,
     )
   }

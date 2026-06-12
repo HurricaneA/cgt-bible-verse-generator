@@ -10,13 +10,13 @@ interface BibleBookJson {
 }
 
 // Vite statically analyzes this and bundles each book as a separate lazy chunk
-const bookModules = import.meta.glob('../bible/*.json') as Record<
+const bookModules = import.meta.glob('../bible_legacy/*.json') as Record<
   string,
   () => Promise<{ default: BibleBookJson }>
 >
 
 export async function getBookChapterNums(bookName: string): Promise<number[]> {
-  const key = `../bible/${bookName}.json`
+  const key = `../bible_legacy/${bookName}.json`
   const loader = bookModules[key]
   if (!loader) return []
   const { default: data } = await loader()
@@ -27,7 +27,7 @@ export async function getChapterVerseNums(
   bookName: string,
   chapter: string,
 ): Promise<number[]> {
-  const key = `../bible/${bookName}.json`
+  const key = `../bible_legacy/${bookName}.json`
   const loader = bookModules[key]
   if (!loader) return []
   const { default: data } = await loader()
@@ -42,7 +42,7 @@ export async function lookupVerses(
   startVerse: number,
   endVerse: number,
 ): Promise<VerseData[]> {
-  const key = `../bible/${bookName}.json`
+  const key = `../bible_legacy/${bookName}.json`
   const loader = bookModules[key]
   if (!loader) throw new Error(`"${bookName}" not found in local Bible data.`)
 

@@ -1,0 +1,454 @@
+{
+  "book": {
+    "english": "1 John",
+    "tamil": "1 யோவான்"
+  },
+  "count": "5",
+  "chapters": [
+    {
+      "chapter": "1",
+      "verses": [
+        {
+          "verse": "1",
+          "text": "MjpKjyha; ,Ue;jJk;> ehq;fs; Nfl;lJk;> vq;fs; fz;fspdhNy fz;lJk;> ehq;fs; Nehf;fpg;ghu;j;jJk;> vq;fs; iffspdhNy njhl;Lg;ghu;j;jJkhapUf;fpw [Ptthu;j;ijiaf; Fwpj;J cq;fSf;F mwptpf;fpNwhk;."
+        },
+        {
+          "verse": "2",
+          "text": "me;j [Ptd; ntspg;gl;lJ@ gpjhtpdplj;jpypUe;Jk;> vq;fSf;F ntspg;gl;lJkhd epj;jߠίkhapUf;fpw me;j [Ptid ehq;fs; fz;L> mijf;Fwpj;Jr; rhl;rpf;nfhLj;J> mij cq;fSf;F mwptpf;fpNwhk;."
+        },
+        {
+          "verse": "3",
+          "text": "ePq;fSk; vq;fNshNl If;fpaKs;stu;fshFk;gb> ehq;fs; fz;Lk; Nfl;Lk; ,Uf;fpwij cq;fSf;Fk; mwptpf;fpNwhk;@ vq;fSila If;fpak; gpjhNthLk; mtUila Fkhudhfpa ,NaRfpwp];JNthLk; ,Uf;fpwJ."
+        },
+        {
+          "verse": "4",
+          "text": "cq;fs; re;Njh\\k; epiwthapUf;Fk;gb ,itfis cq;fSf;F vOJfpNwd;."
+        },
+        {
+          "verse": "5",
+          "text": "Njtd; xspahapUf;fpwhu;> mtupy; vt;tsNtDk; ,Uspy;iy@ ,J ehq;fs; mtuplj;jpy; Nfl;L> cq;fSf;F mwptpf;fpw tpNr\\khapUf;fpwJ."
+        },
+        {
+          "verse": "6",
+          "text": "ehk; mtNuhNl If;fpag;gl;ltu;fs; vd;W nrhy;ypAk;> ,UspNy elf;fpwtu;fshapUe;jhy;> rj;jpaj;jpd;gb elthky; ngha;nrhy;Yfpwtu;fshapUg;Nghk;."
+        },
+        {
+          "verse": "7",
+          "text": "mtu; xspapypUf;fpwJNghy ehKk; xspapNy ele;jhy; xUtNuhnlhUtu; If;fpag;gl;bUg;Nghk;@ mtUila Fkhudhfpa ,NaRfpwp];Jtpd; ,uj;jk; rfy ghtq;fisAk; ePf;fp> ek;ikr; Rj;jpfupf;Fk;."
+        },
+        {
+          "verse": "8",
+          "text": "ekf;Fg; ghtkpy;iynad;Nghkhdhy; ek;ik ehNk tQ;rpf;fpwtu;fshapUg;Nghk;> rj;jpak; ekf;Fs; ,uhJ."
+        },
+        {
+          "verse": "9",
+          "text": "ek;Kila ghtq;fis ehk; mwpf;ifapl;lhy;> ghtq;fis ekf;F kd;dpj;J vy;yh mepahaj;ijAk; ePf;fp ek;ikr; Rj;jpfupg;gjw;F mtu; cz;ikAk; ePjpAk; cs;stuhapUf;fpwhu;."
+        },
+        {
+          "verse": "10",
+          "text": "ehk; ghtQ;nra;atpy;iynad;Nghkhdhy;> ehk; mtiug; ngha;auhf;Ffpwtu;fshapUg;Nghk;> mtUila thu;j;ij ekf;Fs; ,uhJ."
+        }
+      ]
+    },
+    {
+      "chapter": "2",
+      "verses": [
+        {
+          "verse": "1",
+          "text": "vd; gps;isfNs> ePq;fs; ghtQ;nra;ahjgbf;F ,itfis cq;fSf;F vOJfpNwd;@ xUtd; ghtQ;nra;thdhdhy; ePjpguuhapUf;fpw ,NaRfpwp];J ekf;fhfg; gpjhtpdplj;jpy; gupe;J NgRfpwtuhapUf;fpwhu;."
+        },
+        {
+          "verse": "2",
+          "text": "ek;Kila ghtq;fis eptpu;j;jp nra;fpw fpUghjhugyp mtNu@ ek;Kila ghtq;fis khj;jpuk; my;y> ru;tNyhfj;jpd; ghtq;fisAk; eptpu;j;jpnra;fpw gypahapUf;fpwhu;."
+        },
+        {
+          "verse": "3",
+          "text": "mtUila fw;gidfis ehk; iff;nfhs;Sfpwtu;fshdhy;> mtiu mwpe;jpUf;fpNwhnkd;gij mjpdhy; mwpNthk;."
+        },
+        {
+          "verse": "4",
+          "text": "mtiu mwpe;jpUf;fpNwndd;W nrhy;ypAk;> mtUila fw;gidfisf; iff;nfhs;shjtd; ngha;adhapUf;fpwhd;> mtDf;Fs; rj;jpakpy;iy."
+        },
+        {
+          "verse": "5",
+          "text": "mtUila trdj;ijf; iff;nfhs;Sfpwtdplj;jpy; Njt md;G nka;ahfg; G+uzg;gl;bUf;Fk;@ ehk; mtUf;Fs; ,Uf;fpNwhnkd;gij mjpdhNy mwpe;jpUf;fpNwhk;."
+        },
+        {
+          "verse": "6",
+          "text": "mtUf;Fs; epiyj;jpUf;fpNwndd;W nrhy;Yfpwtd;> mtu; ele;jgbNa jhDk; elf;fNtz;Lk;."
+        },
+        {
+          "verse": "7",
+          "text": "rNfhjuNu> ehd; cq;fSf;Fg; Gjpa fw;gidia my;y> MjpKjy; ePq;fs; ngw;wpUf;fpw gioa fw;gidiaNa vOJfpNwd;@ me;jg; gioa fw;gid ePq;fs; MjpKjy; Nfl;bUf;fpw trde;jhNd."
+        },
+        {
+          "verse": "8",
+          "text": "NkYk;> ehd; Gjpa fw;gidiaAk; cq;fSf;F vOJfpNwd;> ,J mtUf;Fs;Sk; cq;fSf;Fs;Sk; nka;ahapUf;fpwJ@ Vndd;why;> ,Us; ePq;fpg;NghfpwJ> nka;ahd xsp ,g;nghOJ gpufhrpf;fpwJ."
+        },
+        {
+          "verse": "9",
+          "text": "xspapNy ,Uf;fpNwd; vd;W nrhy;ypAk; jd; rNfhjuidg; giff;fpwtd; ,Jtiuf;Fk; ,UspNy ,Uf;fpwhd;."
+        },
+        {
+          "verse": "10",
+          "text": "jd; rNfhjudplj;jpy; md;G$Ufpwtd; xspapNy epiynfhz;bUf;fpwhd;@ mtdplj;jpy; ,lwy; xd;Wkpy;iy."
+        },
+        {
+          "verse": "11",
+          "text": "jd; rNfhjuidg; giff;fpwtd; ,UspNy ,Ue;J ,UspNy elf;fpwhd;@ ,UshdJ mtd; fz;fisf; FUlhf;fpdgbahy; jhd; NghFk; ,lk; ,d;dnjd;W mwpahjpUf;fpwhd;."
+        },
+        {
+          "verse": "12",
+          "text": "gps;isfNs> mtUila ehkj;jpdpkpj;jk; cq;fs; ghtq;fs; kd;dpf;fg;gl;bUf;fpwjpdhy; cq;fSf;F vOJfpNwd;."
+        },
+        {
+          "verse": "13",
+          "text": "gpjhf;fNs> MjpKjypUf;fpwtiu ePq;fs; mwpe;jpUf;fpwjpdhy; cq;fSf;F vOJfpNwd;. thypgNu> n[apj;jjpdhy; cq;fSf;F vOJfpNwd;. gps;isfNs ePq;fs; gpjhit mwpe;jpUf;fpwjpdhy; cq;fSf;F vOJfpNwd;."
+        },
+        {
+          "verse": "14",
+          "text": "gpjhf;fNs> MjpKjypUf;fpwtiu ePq;fs; mwpe;jpUf;fpwjpdhy; cq;fSf;F vOjpapUf;fpNwd;. thypgNu> ePq;fs; gythd;fshapUf;fpwjpdhYk;> Njttrdk; cq;fspy; epiyj;jpUf;fpwjpdhYk;> ePq;fs; nghy;yhq;fid n[apj;jjpdhYk;> cq;fSf;F vOjpapUf;fpNwd;."
+        },
+        {
+          "verse": "15",
+          "text": "cyfj;jpYk; cyfj;jpYs;sitfspYk; md;G$uhjpUq;fs;@ xUtd; cyfj;jpy; md;G$u;e;jhy; mtdplj;jpy; gpjhtpd; md;gpy;iy."
+        },
+        {
+          "verse": "16",
+          "text": "Vnddpy;> khk;rj;jpd; ,r;irAk;> fz;fspd; ,r;irAk;> [Ptdj;jpd; ngUikAkhfpa cyfj;jpYs;sitfnsy;yhk; gpjhtpdhYz;lhditfsy;y> mitfs; cyfj;jpdhYz;lhditfs;."
+        },
+        {
+          "verse": "17",
+          "text": "cyfKk; mjpd; ,r;irAk; xope;JNghk;@ NjtDila rpj;jj;jpd;gb nra;fpwtNdh vd;nwd;iwf;Fk; epiyj;jpUg;ghd;."
+        },
+        {
+          "verse": "18",
+          "text": "gps;isfNs> ,J filrpf;fhykhapUf;fpwJ@ me;jpf;fpwp];J tUfpwhndd;W ePq;fs; Nfs;tpg;gl;lgb ,g;nghOJk; mNef me;jpf;fpwp];Jfs; ,Uf;fpwhu;fs;@ mjpdhNy ,J filrpf;fhynkd;W mwpfpNwhk;."
+        },
+        {
+          "verse": "19",
+          "text": "mtu;fs; ek;iktpl;Lg; gpupe;J Nghdhu;fs;> MfpYk; mtu;fs; ek;Kilatu;fshapUf;ftpy;iy@ ek;Kilatu;fshapUe;jhu;fshdhy; ek;KlNd epiyj;jpUg;ghu;fNs@ vy;yhUk; ek;Kilatu;fsy;yntd;W ntspahFk;gbf;Nf gpupe;JNghdhu;fs;."
+        },
+        {
+          "verse": "20",
+          "text": "ePq;fs; gupRj;juhNy mgpN\\fk; ngw;Wr; rfyj;ijAk; mwpe;jpUf;fpwPu;fs;."
+        },
+        {
+          "verse": "21",
+          "text": "rj;jpaj;ij ePq;fs; mwpahjjpdhyy;y> ePq;fs; rj;jpaj;ij mwpe;jpUf;fpwjpdhYk; rj;jpaj;jpdhy; xU ngha;AKz;lhapuhnjd;gij ePq;fs; mwpe;jpUf;fpwjpdhYk;> cq;fSf;F vOjpapUf;fpNwd;."
+        },
+        {
+          "verse": "22",
+          "text": ",NaRitf; fpwp];J my;y vd;W kWjypf;fpwtNday;yhky; NtNw ahu; ngha;ad;? gpjhitAk; FkhuidAk; kWjypf;fpwtNd me;jpf;fpwp];J."
+        },
+        {
+          "verse": "23",
+          "text": "Fkhuid kWjypf;fpwtd; gpjhit cilatdy;y> Fkhuid mwpf;ifapLfpwtd; gpjhitAk; cilatdhapUf;fpwhd;."
+        },
+        {
+          "verse": "24",
+          "text": "Mifahy; MjpKjy; ePq;fs; Nfs;tpg;gl;lJ cq;fspy; epiyj;jpUf;ff;fltJ@ MjpKjy; ePq;fs; Nfs;tpg;gl;lJ cq;fspy; epiyj;jpUe;jhy;> ePq;fSk; FkhudpYk; gpjhtpYk; epiyj;jpUg;gPu;fs;."
+        },
+        {
+          "verse": "25",
+          "text": "epj;jpa [Ptid mspg;Ngd; vd;gNj mtu; ekf;Fr; nra;j thf;Fj;jj;jk;."
+        },
+        {
+          "verse": "26",
+          "text": "cq;fis tQ;rpf;fpwtu;fisf; Fwpj;J ,itfis cq;fSf;F vOjpapUf;fpNwd;."
+        },
+        {
+          "verse": "27",
+          "text": "ePq;fs; mtuhNy ngw;w mgpN\\fk; cq;fspy; epiyj;jpUf;fpwJ> xUtUk; cq;fSf;Fg; Nghjpf;fNtz;Ltjpy;iy@ me;j mgpN\\fk; rfyj;ijAq;Fwpj;J cq;fSf;Fg; Nghjpf;fpwJ@ mJ rj;jpakhapUf;fpwJ> ngha;ay;y> mJ cq;fSf;Fg; Nghjpj;jgbNa mtupy; epiyj;jpUg;gPu;fshf."
+        },
+        {
+          "verse": "28",
+          "text": ",g;gbapUf;f> gps;isfNs> mtu; ntspg;gLk;NghJ ehk; mtu; tUifapy; mtUf;F Kd;ghf ntl;fg;gl;Lg;Nghfhky; ijupaKs;stu;fshapUf;Fk;gb mtupy; epiyj;jpUq;fs;."
+        },
+        {
+          "verse": "29",
+          "text": "mtu; ePjpAs;stuhapUf;fpwhnud;W cq;fSf;Fj; njupe;jpUg;gjpdhy;> ePjpiar; nra;fpwtndtDk; mtupy; gpwe;jtndd;W mwpe;jpUf;fpwPu;fs;."
+        }
+      ]
+    },
+    {
+      "chapter": "3",
+      "verses": [
+        {
+          "verse": "1",
+          "text": "ehk; NjtDila gps;isfnsd;W miof;fg;gLtjpdhNy gpjhthdtu; ekf;Fg; ghuhl;bd md;G vt;tsT ngupnjd;W ghUq;fs;@ cyfk; mtiu mwpahjgbapdhNy ek;ikAk; mwpatpy;iy."
+        },
+        {
+          "verse": "2",
+          "text": "gpupakhdtu;fNs> ,g;nghOJ NjtDila gps;isfshapUf;fpNwhk;> ,dp vt;tpjkhapUg;Nghnkd;W ,d;Dk; ntspg;gltpy;iy@ MfpYk; mtu; ntspg;gLk;NghJ mtu; ,Uf;fpwtz;zkhfNt ehk; mtiuj; juprpg;gjpdhy;> mtUf;F xg;ghapUg;Nghnkd;W mwpe;jpUf;fpNwhk;."
+        },
+        {
+          "verse": "3",
+          "text": "mtu;Nky; ,g;gbg;gl;l ek;gpf;if itj;jpUf;fpwtndtDk;> mtu; Rj;jKs;stuhapUf;fpwJNghy> jd;idAk; Rj;jpfupj;Jf;nfhs;Sfpwhd;."
+        },
+        {
+          "verse": "4",
+          "text": "ghtQ;nra;fpw vtDk; epahag;gpukhzj;ij kPWfpwhd;@ epahag;gpukhzj;ij kPWfpwNj ghtk;."
+        },
+        {
+          "verse": "5",
+          "text": "mtu; ek;Kila ghtq;fisr; Rke;J jPu;f;f ntspg;gl;lhnud;W mwptPu;fs;@ mtuplj;jpy; ghtkpy;iy."
+        },
+        {
+          "verse": "6",
+          "text": "mtupy; epiyj;jpUf;fpw vtDk; ghtQ;nra;fpwjpy;iy@ ghtQ;nra;fpw vtDk; mtiuf; fhzTkpy;iy> mtiu mwpaTkpy;iy"
+        },
+        {
+          "verse": "7",
+          "text": "gps;isfNs ePq;fs; xUtuhYk; tQ;rpf;fg;glhjpUq;fs;@ ePjpiar; nra;fpwtd; mtu; ePjpAs;stuhapUf;fpwJNghyj; jhDk; ePjpAs;stdhapUf;fpwhd;."
+        },
+        {
+          "verse": "8",
+          "text": "ghtQ;nra;fpwtd; gprhrpdhYz;lhapUf;fpwhd;@ Vnddpy; gprhrhdtd; MjpKjy; ghtQ;nra;fpwhd;> gprhrpDila fpupiafis mopf;Fk;gbf;Nf NjtDila Fkhud; ntspg;gl;lhu;."
+        },
+        {
+          "verse": "9",
+          "text": "Njtdhy; gpwe;j vtDk; ghtQ;nra;ahd;> Vnddpy; mtUila tpj;J mtDf;Fs; jupj;jpUf;fpwJ@ mtd; Njtdhy; gpwe;jgbapdhy; ghtQ;nra;akhl;lhd;."
+        },
+        {
+          "verse": "10",
+          "text": ",jpdhNy NjtDila gps;isfs; ,d;dhnud;Wk;> gprhrpd; gps;isfs; ,d;dhnud;Wk; ntspg;gLk;@ ePjpiar;nra;ahkYk; jd; rNfhjudpy; md;G$uhkYk; ,Uf;fpw vtDk; NjtdhYz;lhdtdy;y."
+        },
+        {
+          "verse": "11",
+          "text": "ehk; xUtupnyhUtu; md;G$uNtz;Lnkd;gNj ePq;fs; MjpKjy; Nfs;tpg;gl;l tpNr\\khapUf;fpwJ."
+        },
+        {
+          "verse": "12",
+          "text": "nghy;yhq;fdhy; cz;lhapUe;J jd; rNfhjuidf; nfhiynra;j fhaPidg;NghypUf;fNtz;lhk;@ mtd; vjpdpkpj;jk; mtidf; nfhiynra;jhd;? jd; fpupiafs; nghy;yhjitfSk;> jd; rNfhjuDila fpupiafs; ePjpAs;sitfSkhapUe;jjpdpkpj;je;jhNd."
+        },
+        {
+          "verse": "13",
+          "text": "vd; rNfhjuNu> cyfk; cq;fisg; gifj;jhy; Mr;rupag;glhjpUq;fs;."
+        },
+        {
+          "verse": "14",
+          "text": "ehk; rNfhjuuplj;jpy; md;G$Ufpwgbahy;> kuzj;ijtpl;L ePq;fp [PtDf;Fl;gl;bUf;fpNwhnkd;W mwpe;jpUf;fpNwhk;. rNfhjudplj;jpy; md;G$uhjtd; kuzj;jpy; epiynfhz;bUf;fpwhd;."
+        },
+        {
+          "verse": "15",
+          "text": "jd; rNfhjuidg; giff;fpw vtDk; kD\\nfhiyghjfdhapUf;fpwhd;@ kD\\ nfhiyghjfndtNdh mtDf;Fs; epj;jpa[Ptd; epiyj;jpuhJ vd;W mwptPu;fs;."
+        },
+        {
+          "verse": "16",
+          "text": "mtu; jk;Kila [Ptid ekf;fhff; nfhLj;jjpdhNy md;G ,d;dnjd;W mwpe;jpUf;fpNwhk;@ ehKk; rNfhjuUf;fhf [Ptidf;nfhLf;ff; fldhspfshapUf;fpNwhk;."
+        },
+        {
+          "verse": "17",
+          "text": "xUtd; ,t;Tyf M];jp cilatdhapUe;J> jd; rNfhjuDf;Ff; Fiwr;rYz;nld;W fz;L> jd; ,Ujaj;ij mtDf;F milj;Jf;nfhz;lhy;> mtDf;Fs; Njt md;G epiynfhs;Sfpwnjg;gb?"
+        },
+        {
+          "verse": "18",
+          "text": "vd; gps;isfNs> trdj;jpdhYk;> ehtpdhYky;y> fpupiaapdhYk; cz;ikapdhYk; md;G$uf;flNthk;."
+        },
+        {
+          "verse": "19",
+          "text": ",jpdhNy ehk; ek;ikr; rj;jpaj;jpw;Fupatu;fnsd;W mwpe;J> ek;Kila ,Ujaj;ij mtUf;F Kd;ghf epr;rag;gLj;jpf;nfhs;syhk;."
+        },
+        {
+          "verse": "20",
+          "text": "ek;Kila ,UjaNk ek;ikf; Fw;wthspfshfj; jPu;f;Fkhdhy;> Njtd; ek;Kila ,Ujaj;jpYk; ngupatuhapUe;J rfyj;ijAk; mwpe;jpUf;fpwhu;."
+        },
+        {
+          "verse": "21",
+          "text": "gpupakhdtu;fNs> ek;Kila ,Ujak; ek;ikf; Fw;wthspfnsd;W jPu;f;fhjpUe;jhy;> ehk; Njtdplj;jpy; ijupaq;nfhz;bUe;J>"
+        },
+        {
+          "verse": "22",
+          "text": "mtUila fw;gidfis ehk; iff;nfhz;L mtUf;F Kd;ghfg; gpupakhditfisr; nra;fpwgbapdhy; ehk; Ntz;bf;nfhs;SfpwnjJNth mij mtuhNy ngw;Wf;nfhs;SfpNwhk;."
+        },
+        {
+          "verse": "23",
+          "text": "ehk; mtUila Fkhudhfpa ,NaRfpwp];Jtpd; ehkj;jpd;Nky; tpRthrkhapUe;J> mtu; ekf;Ff; fl;lisapl;lgb xUtupnyhUtu; md;ghapUf;fNtz;Lnkd;gNj mtUila fw;gidahapUf;fpwJ."
+        },
+        {
+          "verse": "24",
+          "text": "mtUila fl;lisfisf; iff;nfhs;Sfpwtd; mtupy; epiyj;jpUf;fpwhd;. mtUk; mtdpy; epiyj;jpUf;fpwhu;@ mtu; ek;kpy; epiyj;jpUf;fpwij mtu; ekf;Fj; je;jUspd MtpapdhNy mwpe;jpUf;fpNwhk;."
+        }
+      ]
+    },
+    {
+      "chapter": "4",
+      "verses": [
+        {
+          "verse": "1",
+          "text": "gpupakhdtu;fNs> cyfj;jpy; mNefq; fs;sj;jPu;f;fjuprpfs; Njhd;wpapUg;gjpdhy;> ePq;fs; vy;yh MtpfisAk; ek;ghky;> me;j Mtpfs; NjtdhYz;lhditfNsh vd;W Nrhjpj;jwpAq;fs;."
+        },
+        {
+          "verse": "2",
+          "text": "NjtMtpia ePq;fs; vjpdhNy mwpayhnkd;why;: khk;rj;jpy; te;j ,NaRfpwp];Jit mwpf;ifgz;Zfpw ve;j MtpAk; Njtdhy; cz;lhapUf;fpwJ."
+        },
+        {
+          "verse": "3",
+          "text": "khk;rj;jpy; te;j ,NaRfpwp];Jit mwpf;ifgz;zhj ve;j MtpAk; Njtdhy; cz;lhdjy;y@ tUnkd;W ePq;fs; Nfs;tpg;gl;l me;jpf;fpwp];JtpDila Mtp mJNt> mJ ,g;nghOJk; cyfj;jpy; ,Uf;fpwJ."
+        },
+        {
+          "verse": "4",
+          "text": "gps;isfNs> ePq;fs; NjtdhYz;lhapUe;J> mtu;fis n[apj;jPu;fs;@ Vnddpy; cyfj;jpypUf;fpwtdpYk; cq;fspypUf;fpwtu; ngupatu;."
+        },
+        {
+          "verse": "5",
+          "text": "mtu;fs; cyfj;Jf;Fupatu;fs;> Mifahy; cyfj;Jf;Fupaitfisg; NgRfpwhu;fs;> cyfKk; mtu;fSf;Fr; nrtpnfhLf;Fk;."
+        },
+        {
+          "verse": "6",
+          "text": "ehq;fs; Njtdhy; cz;lhdtu;fs;@ Njtid mwpe;jtd; vq;fSf;Fr; nrtpnfhLf;fpwhd;@ Njtdhy; cz;lhapuhjtd; vq;fSf;Fr; nrtpnfhLf;fpwjpy;iy@ ,jpdhNy rj;jpa Mtp ,d;dnjd;Wk;> tQ;rfMtp ,d;dnjd;Wk; mwpe;jpUf;fpNwhk;."
+        },
+        {
+          "verse": "7",
+          "text": "gpupakhdtu;fNs> xUtupnyhUtu; md;ghapUf;ff;flNthk;. Vnddpy; md;G Njtdhy; cz;lhapUf;fpwJ. md;Gs;s vtDk; Njtdhy; gpwe;J> mtiu mwpe;jpUf;fpwhd;."
+        },
+        {
+          "verse": "8",
+          "text": "md;gpy;yhjtd; Njtid mwpahd;> Njtd; md;ghfNt ,Uf;fpwhu;."
+        },
+        {
+          "verse": "9",
+          "text": "jk;Kila xNu Ngwhd FkhudhNy ehk; gpiof;Fk;gbf;F Njtd; mtiu ,t;Tyfj;jpNy mDg;gpdjpdhy; Njtd; ek;Nky; itj;j md;G ntspg;gl;lJ."
+        },
+        {
+          "verse": "10",
+          "text": "ehk; Njtdplj;jpy; md;G$u;e;jjpdhy; my;y> mtu; ek;kplj;jpy; md;G$u;e;J> ek;Kila ghtq;fis eptpu;j;jpnra;fpw fpUghjhugypahfj; jk;Kila Fkhuid mDg;gpdjpdhNy md;G cz;lhapUf;fpwJ."
+        },
+        {
+          "verse": "11",
+          "text": "gpupakhdtu;fNs> Njtd; ,t;tpjkha; ek;kplj;jpy; md;G$u;e;jpUf;f> ehKk; xUtuplj;jpy; xUtu; md;G$uf; fldhspfshapUf;fpNwhk;."
+        },
+        {
+          "verse": "12",
+          "text": "Njtid xUtUk; xUNghJk; fz;ljpy;iy@ ehk; xUtuplj;jpy; xUtu; md;G$u;e;jhy; Njtd; ekf;Fs; epiyj;jpUf;fpwhu;@ mtUila md;Gk; ekf;Fs; G+uzg;gLk;."
+        },
+        {
+          "verse": "13",
+          "text": "mtu; jk;Kila Mtpapy; ekf;Fj; je;jUspdjpdhNy ehk; mtupYk; mtu; ek;kpYk; epiyj;jpUf;fpwij mwpe;jpUf;fpNwhk;."
+        },
+        {
+          "verse": "14",
+          "text": "gpjhthdtu; Fkhuid cyful;rfuhf mDg;gpdhnud;W ehq;fs; fz;L rhl;rpapLfpNwhk;."
+        },
+        {
+          "verse": "15",
+          "text": ",NaRthdtu; NjtDila Fkhundd;W mwpf;ifgz;Zfpwtd; vtNdh mtdpy; Njtd; epiyj;jpUf;fpwhu;> mtDk; Njtdpy; epiyj;jpUf;fpwhd;."
+        },
+        {
+          "verse": "16",
+          "text": "Njtd; ek;Nky; itj;jpUf;fpw md;ig ehk; mwpe;J tpRthrpj;jpUf;fpNwhk;. Njtd; md;ghfNt ,Uf;fpwhu;@ md;gpy; epiyj;jpUf;fpwtd; Njtdpy; epiyj;jpUf;fpwhd;> NjtDk; mtdpy; epiyj;jpUf;fpwhu;."
+        },
+        {
+          "verse": "17",
+          "text": "epahaj;jPu;g;GehspNy ekf;Fj; ijupaKz;lhapUf;fj;jf;fjhf md;G ek;kplj;jpy; G+uzg;gLfpwJ@ Vndd;why;> mtu; ,Uf;fpwgpufhukhf ehKk; ,t;Tyfj;jpy; ,Uf;fpNwhk;."
+        },
+        {
+          "verse": "18",
+          "text": "md;gpNy gakpy;iy@ G+uz md;G gaj;ijg; Gwk;Ng js;Sk;@ gakhdJ NtjidAs;sJ> gag;gLfpwtd; md;gpy; G+uzg;gl;ltd; my;y."
+        },
+        {
+          "verse": "19",
+          "text": "mtu; Ke;jp ek;kplj;jpy; md;G$u;e;jgbahy; ehKk; mtuplj;jpy; md;G$UfpNwhk;."
+        },
+        {
+          "verse": "20",
+          "text": "Njtdplj;jpy; md;G$UfpNwndd;W xUtd; nrhy;ypAk;> jd; rNfhjuidg; gifj;jhy;> mtd; ngha;ad;@ jhd; fz;l rNfhjudplj;jpy; md;G$uhkypUf;fpwtd;> jhd; fhzhj Njtdplj;jpy; vg;gb md;G$Uthd;?"
+        },
+        {
+          "verse": "21",
+          "text": "Njtdplj;jpy; md;G$Ufpwtd; jd; rNfhjudplj;jpYk; md;G$uNtz;Lnkd;fpw ,e;jf; fw;gidia mtuhNy ngw;wpUf;fpNwhk;."
+        }
+      ]
+    },
+    {
+      "chapter": "5",
+      "verses": [
+        {
+          "verse": "1",
+          "text": ",NaRthdtNu fpwp];J vd;W tpRthrpf;fpw vtDk; Njtdhy; gpwe;jpUf;fpwhd;@ gpwg;gpj;jtuplj;jpy; md;G$Ufpw vtDk; mtuhy; gpwg;gpf;fg;gl;ltdplj;jpYk; md;G$Ufpwhd;."
+        },
+        {
+          "verse": "2",
+          "text": "ehk; Njtdplj;jpy; md;G$u;e;J mtUila fw;gidfisf; iff;nfhs;Sk;NghJ> NjtDila gps;isfsplj;jpy; md;G$UfpNwhnkd;W mwpe;J nfhs;SfpNwhk;."
+        },
+        {
+          "verse": "3",
+          "text": "ehk; NjtDila fw;gidfisf; iff;nfhs;tNj mtuplj;jpy; md;G$Utjhk;@ mtUila fw;gidfs; ghukhditfSky;y."
+        },
+        {
+          "verse": "4",
+          "text": "Njtdhy; gpwg;gnjy;yhk; cyfj;ij n[apf;Fk;@ ek;Kila tpRthrNk cyfj;ij n[apf;fpw n[ak;."
+        },
+        {
+          "verse": "5",
+          "text": ",NaRthdtu; NjtDila Fkhundd;W tpRthrpf;fpwtNdad;wp cyfj;ij n[apf;fpwtd; ahu;?"
+        },
+        {
+          "verse": "6",
+          "text": ",NaRfpwp];Jthfpa ,tNu [yj;jpdhYk; ,uj;jj;jpdhYk; te;jtu;@ [yj;jpdhNy khj;jpuky;y> [yj;jpdhYk; ,uj;jj;jpdhYk; te;jtu;. Mtpahdtu; rj;jpakhifahy;> MtpahdtNu rhl;rpnfhLf;fpwtu;."
+        },
+        {
+          "verse": "7",
+          "text": "[guNyhfj;jpNy rhl;rpapLfpwtu;fs; %tu;> gpjh> thu;j;ij> gupRj;j Mtp vd;gtu;fNs> ,k;%tUk; xd;whapUf;fpwhu;fs;@"
+        },
+        {
+          "verse": "8",
+          "text": "G+Nyhfj;jpNy] rhl;rpapLfpwitfs; %d;W> Mtp> [yk;> ,uj;jk; vd;gitfNs> ,k;%d;Wk; xUikg;gl;bUf;fpwJ."
+        },
+        {
+          "verse": "9",
+          "text": "ehk; kD\\Uila rhl;rpia Vw;Wf;nfhz;lhy;> mijg;ghu;f;fpYk; NjtDila rhl;rp mjpfkhapUf;fpwJ@ Njtd; jkJ Fkhuidf; Fwpj;Jf; nfhLj;j rhl;rp ,JNt."
+        },
+        {
+          "verse": "10",
+          "text": "NjtDila Fkhudplj;jpy; tpRthrkhapUf;fpwtd; me;jr; rhl;rpiaj; jdf;Fs;Ns nfhz;bUf;fpwhd;@ Njtid tpRthrpahjtNdh> Njtd; jk;Kila Fkhuidf; Fwpj;Jf;nfhLj;j rhl;rpia tpRthrpahjjpdhy; mtiug; ngha;auhf;Ffpwhd;."
+        },
+        {
+          "verse": "11",
+          "text": "Njtd; ekf;F epj;jpa [Ptidj; je;jpUf;fpwhu;> me;j [Ptd; mtUila Fkhudpy; ,Uf;fpwnjd;gNj me;jr;rhl;rpahk;."
+        },
+        {
+          "verse": "12",
+          "text": "Fkhuid cilatd; [Ptid cilatd;> NjtDila Fkhud; ,y;yhjtd; [Ptd; ,y;yhjtd;."
+        },
+        {
+          "verse": "13",
+          "text": "cq;fSf;F epj;jpa[Ptd; cz;nld;W ePq;fs; mwpaTk;> NjtFkhuDila ehkj;jpd; Nky; ePq;fs; tpRthrkhapUf;fTk;> NjtFkhuDila ehkj;jpd; Nky; tpRthrkhapUf;fpw cq;fSf;F ,itfis vOjpapUf;fpNwd;."
+        },
+        {
+          "verse": "14",
+          "text": "ehk; vijahfpYk; mtUila rpj;jj;jpd;gbNfl;lhy;> mtu; ekf;Fr; nrtpnfhLf;fpwhnud;gNj mtiug; gw;wp ehk; nfhz;bUf;fpw ijupak;."
+        },
+        {
+          "verse": "15",
+          "text": "ehk; vijf; Nfl;lhYk; mtu; ekf;Fr; nrtpnfhLf;fpwhnud;W ehk; mwpe;jpUe;Njhkhdhy;> mtuplj;jpy; ehk; Nfl;litfisg; ngw;Wf;nfhz;Nlhnkd;Wk; mwpe;jpUf;fpNwhk;."
+        },
+        {
+          "verse": "16",
+          "text": "kuzj;Jf;F VJty;yhj ghtj;ijj; jd; rNfhjud; nra;a xUtd; fz;lhy;> mtd; Ntz;Ljy;nra;af;fltd;> mg;nghOJ mtDf;F [Ptidf; nfhLg;ghu;@ ahUf;nfd;why;> kuzj;Jf;F VJty;yhj ghtj;ijr; nra;jtu;fSf;Nf@ kuzj;Jf;F VJthd ghtKz;L> mijf;Fwpj;J Ntz;Ljy;nra;a ehd; nrhy;Nyd;."
+        },
+        {
+          "verse": "17",
+          "text": "mePjpnay;yhk; ghte;jhd;@ vd;whYk; kuzj;Jf;F VJty;yhj ghtKKz;L."
+        },
+        {
+          "verse": "18",
+          "text": "Njtdhy; gpwe;j vtDk; ghtQ;nra;ahndd;W mwpe;jpUf;fpNwhk;@ Njtdhy; gpwe;jtd; jd;idf; fhf;fpwhd;> nghy;yhq;fd; mtidj; njhlhd;."
+        },
+        {
+          "verse": "19",
+          "text": "ehk; Njtdhy; cz;lhapUf;fpNwhnkd;Wk;> cyfKOtJk; nghy;yhq;fDf;Fs; fplf;fpwnjd;Wk; mwpe;jpUf;fpNwhk;."
+        },
+        {
+          "verse": "20",
+          "text": "md;wpAk;> ehk; rj;jpaKs;stiu mwpe;Jnfhs;tjw;F NjtDila Fkhud; te;J ekf;Fg; Gj;jpiaj; je;jpUf;fpwhnud;Wk; mwpNthk;@ mtUila Fkhudhfpa ,NaRfpwp];J vd;dg;gl;l rj;jpaKs;stUf;Fs;Sk; ,Uf;fpNwhk;@ ,tNu nka;ahd NjtDk; epj;jpa[PtDkhapUf;fpwhu;."
+        },
+        {
+          "verse": "21",
+          "text": "gps;isfNs> ePq;fs; tpf;fpufq;fSf;F tpyfp> cq;fisf; fhj;Jf;nfhs;tPu;fshf. Mnkd;."
+        }
+      ]
+    }
+  ]
+}
