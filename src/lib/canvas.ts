@@ -11,6 +11,7 @@ import type { VerseData, BookInfo, GeneratedPage } from '../types'
 const MIN_VERSE_PX = 36
 const TAMIL_FONT = `'Tharmini', sans-serif`
 const ENGLISH_FONT = `'Roboto', sans-serif`
+const ENGLISH_TITLE_FONT = `Arial, sans-serif`
 
 function wrapText(
   text: string,
@@ -123,7 +124,7 @@ function renderCanvas(
     CONFIG.titleMarginLeft,
     CONFIG.titleBaselineY,
   )
-  ctx.font = `bold ${TITLE_PX}px ${ENGLISH_FONT}`
+  ctx.font = `${TITLE_PX}px ${ENGLISH_TITLE_FONT}`
   const engTitle = `${bookInfo.englishBook} ${bookInfo.chapter}:${verseRange}`
   ctx.fillText(
     engTitle,
