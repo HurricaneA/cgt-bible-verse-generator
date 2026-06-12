@@ -1,8 +1,9 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { tamilBookNames, tamilBookNamesLegacy } from '../lib/bible-data'
 import { lookupVerses } from '../lib/lookup-verses'
 import { createPages } from '../lib/canvas'
-import type { BookInfo, GenerateState } from '../types'
+import type { RenderSettings } from '../lib/config'
+import type { BookInfo, VerseData, GenerateState } from '../types'
 
 function parseReference(input: string) {
   const match = input.replace(/\./g, ':').match(/([a-zA-Z0-9 ]+) (\d+):(\d+)(?:-(\d+))?/)
@@ -32,8 +33,11 @@ const IDLE: GenerateState = { status: 'idle', error: null, pages: [], bookInfo: 
 
 export function useGenerateImages() {
   const [state, setState] = useState<GenerateState>(IDLE)
+  // Last successfully fetched verses, kept so settings tweaks can re-render
+  // the images without re-fetching.
+  const lastRef = useRef<{ verses: VerseData[]; bookInfo: BookInfo } | null>(null)
 
-  const generate = useCallback(async (input: string) => {
+  const generate = useCallback(async (input: string, settings?: RenderSettings) => {
     const trimmed = input.trim()
     if (!trimmed) return
 
@@ -103,11 +107,21 @@ export function useGenerateImages() {
       document.fonts.load(`bold 50px 'Tharmini'`),
     ])
 
-    const pages = createPages(verses, bookInfo)
+    lastRef.current = { verses, bookInfo }
+    const pages = createPages(verses, bookInfo, settings)
     setState({ status: 'done', error: null, pages, bookInfo })
+  }, [])
+
+  // Re-render the current verses with new settings (no re-fetch). Fonts are
+  // already loaded from the initial generate, so this is synchronous.
+  const rerender = useCallback((settings: RenderSettings) => {
+    const last = lastRef.current
+    if (!last) return
+    const pages = createPages(last.verses, last.bookInfo, settings)
+    setState((s) => (s.status === 'done' ? { ...s, pages } : s))
   }, [])
 
   const reset = useCallback(() => setState(IDLE), [])
 
-  return { state, generate, reset }
+  return { state, generate, rerender, reset }
 }

@@ -14,9 +14,39 @@ export const CONFIG = {
   verseFontPt: 17,       // 300 DPI → ~71px (slightly reduced to fit 8 lines)
 } as const
 
-function ptToPx(pt: number): number {
+export function ptToPx(pt: number): number {
   return Math.round((pt * CONFIG.canvasDPI) / 72)
 }
+
+/** User-tunable render options (persisted in the browser; see useRenderSettings). */
+export interface RenderSettings {
+  /** horizontal inset of the title from each edge, px */
+  titleInset: number
+  /** title font size in points (on the 300-DPI canvas) */
+  titleFontPt: number
+  /** title baseline Y position, px */
+  titleY: number
+  /** text colour for title + verses, hex (#rrggbb) */
+  textColor: string
+  /** background colour, hex (#rrggbb) */
+  bgColor: string
+}
+
+export const DEFAULT_SETTINGS: RenderSettings = {
+  titleInset: CONFIG.titleMarginLeft,
+  titleFontPt: CONFIG.titleFontPt,
+  titleY: CONFIG.titleBaselineY,
+  textColor: '#ffffff',
+  bgColor: '#000000',
+}
+
+/** Slider bounds for the title controls. */
+export const TITLE_LIMITS = {
+  titleInset: { min: 80, max: 600, step: 10 },
+  titleFontPt: { min: 6, max: 28, step: 1 },
+  // keep the title baseline below the separator line (CONFIG.sepY = 170)
+  titleY: { min: 190, max: 340, step: 5 },
+} as const
 
 export const VERSE_PX = ptToPx(CONFIG.verseFontPt)
 export const TITLE_PX = ptToPx(CONFIG.titleFontPt)

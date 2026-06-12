@@ -5,10 +5,22 @@ import {
   SEP_Y,
   VERSE_Y,
   VERSE_AREA_H,
+  ptToPx,
+  DEFAULT_SETTINGS,
 } from './config'
+import type { RenderSettings } from './config'
 import type { VerseData, BookInfo, GeneratedPage } from '../types'
 
 const MIN_VERSE_PX = 36
+
+/** #rrggbb -> rgba(...) with the given alpha (for the separator / page number). */
+function withAlpha(hex: string, alpha: number): string {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim())
+  if (!m) return hex
+  const n = parseInt(m[1], 16)
+  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`
+}
+
 const TAMIL_FONT = `'Tharmini', sans-serif`
 const ENGLISH_FONT = `'Roboto', sans-serif`
 const ENGLISH_TITLE_FONT = `Arial, sans-serif`
@@ -89,6 +101,7 @@ function renderCanvas(
   totalPages: number,
   bookInfo: BookInfo,
   fontPx: number,
+  settings: RenderSettings,
 ): void {
   const ctx = canvas.getContext('2d')!
   const { canvasWidth, canvasHeight } = CONFIG
@@ -103,33 +116,35 @@ function renderCanvas(
   const verseRange = pageStart === pageEnd ? `${pageStart}` : `${pageStart}-${pageEnd}`
 
   // Background
-  ctx.fillStyle = '#000'
+  ctx.fillStyle = settings.bgColor
   ctx.fillRect(0, 0, canvasWidth, canvasHeight)
 
   // Separator — spans the verse text area width
-  ctx.strokeStyle = 'rgba(255,255,255,0.35)'
+  ctx.strokeStyle = withAlpha(settings.textColor, 0.35)
   ctx.lineWidth = 1
   ctx.beginPath()
   ctx.moveTo(CONFIG.marginLeft, SEP_Y)
   ctx.lineTo(canvasWidth - CONFIG.marginRight, SEP_Y)
   ctx.stroke()
 
-  // Title: Tamil left, English right — inset further than verse text
-  ctx.fillStyle = '#fff'
+  // Title: Tamil left, English right — inset further than verse text.
+  // Inset, font size and vertical position are user-configurable.
+  const titlePx = ptToPx(settings.titleFontPt)
+  ctx.fillStyle = settings.textColor
   ctx.textAlign = 'left'
   ctx.wordSpacing = '6px'
-  ctx.font = `bold ${TITLE_PX}px ${TAMIL_FONT}`
+  ctx.font = `bold ${titlePx}px ${TAMIL_FONT}`
   ctx.fillText(
     `${bookInfo.tamilBook} ${bookInfo.chapter}:${verseRange}`,
-    CONFIG.titleMarginLeft,
-    CONFIG.titleBaselineY,
+    settings.titleInset,
+    settings.titleY,
   )
-  ctx.font = `${TITLE_PX}px ${ENGLISH_TITLE_FONT}`
+  ctx.font = `${titlePx}px ${ENGLISH_TITLE_FONT}`
   const engTitle = `${bookInfo.englishBook} ${bookInfo.chapter}:${verseRange}`
   ctx.fillText(
     engTitle,
-    canvasWidth - CONFIG.titleMarginRight - ctx.measureText(engTitle).width,
-    CONFIG.titleBaselineY,
+    canvasWidth - settings.titleInset - ctx.measureText(engTitle).width,
+    settings.titleY,
   )
 
   // Measure verse block height for vertical centering
@@ -143,7 +158,7 @@ function renderCanvas(
   let y = VERSE_Y + Math.max(0, Math.floor((VERSE_AREA_H - blockH) / 2))
 
   // Draw verses — bold, centered
-  ctx.fillStyle = '#fff'
+  ctx.fillStyle = settings.textColor
   ctx.textAlign = 'center'
   ctx.wordSpacing = '8px'
   for (const v of verses) {
@@ -160,7 +175,7 @@ function renderCanvas(
     ctx.textAlign = 'right'
     ctx.wordSpacing = '0px'
     ctx.font = `bold ${TITLE_PX}px ${ENGLISH_FONT}`
-    ctx.fillStyle = 'rgba(255,255,255,0.45)'
+    ctx.fillStyle = withAlpha(settings.textColor, 0.45)
     ctx.fillText(
       `${page} / ${totalPages}`,
       canvasWidth - CONFIG.titleMarginRight,
@@ -169,7 +184,11 @@ function renderCanvas(
   }
 }
 
-export function createPages(verses: VerseData[], bookInfo: BookInfo): GeneratedPage[] {
+export function createPages(
+  verses: VerseData[],
+  bookInfo: BookInfo,
+  settings: RenderSettings = DEFAULT_SETTINGS,
+): GeneratedPage[] {
   const tmp = document.createElement('canvas')
   tmp.width = CONFIG.canvasWidth
   tmp.height = CONFIG.canvasHeight
@@ -183,7 +202,7 @@ export function createPages(verses: VerseData[], bookInfo: BookInfo): GeneratedP
     const canvas = document.createElement('canvas')
     canvas.width = CONFIG.canvasWidth
     canvas.height = CONFIG.canvasHeight
-    renderCanvas(canvas, pageVerses, i + 1, pages.length, bookInfo, fontPx)
+    renderCanvas(canvas, pageVerses, i + 1, pages.length, bookInfo, fontPx, settings)
     return { canvas, dataUrl: canvas.toDataURL('image/png') }
   })
 }
