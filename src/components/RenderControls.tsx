@@ -97,6 +97,23 @@ export default function RenderControls({ settings, update, reset }: Props) {
           onChange={(v) => update('titleY', v)}
         />
 
+        <Divider label="Verses" labelPosition="left" />
+
+        <SliderField
+          label="Font size"
+          value={settings.verseFontPt}
+          unit="pt"
+          {...TITLE_LIMITS.verseFontPt}
+          onChange={(v) => update('verseFontPt', v)}
+        />
+        <SliderField
+          label="Line spacing"
+          value={settings.lineSpacingPt}
+          unit="pt"
+          {...TITLE_LIMITS.lineSpacingPt}
+          onChange={(v) => update('lineSpacingPt', v)}
+        />
+
         <Divider label="Colours" labelPosition="left" />
 
         <ColorInput

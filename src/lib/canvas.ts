@@ -1,6 +1,5 @@
 import {
   CONFIG,
-  VERSE_PX,
   TITLE_PX,
   SEP_Y,
   VERSE_Y,
@@ -50,10 +49,13 @@ function paginateVerses(
   verses: VerseData[],
   ctx: CanvasRenderingContext2D,
   maxTextWidth: number,
+  lineSpacingPt: number,
+  verseFontPt: number,
 ): VerseData[][] {
-  ctx.font = `bold ${VERSE_PX}px ${TAMIL_FONT}`
-  const lineH = Math.round(VERSE_PX * 1.5)
-  const verseGap = Math.round(VERSE_PX * 0.5)
+  const versePx = ptToPx(verseFontPt)
+  ctx.font = `bold ${versePx}px ${TAMIL_FONT}`
+  const lineH = ptToPx(lineSpacingPt)
+  const verseGap = Math.round(versePx * 0.5)
   const pages: VerseData[][] = []
   let page: VerseData[] = []
   let y = 0
@@ -74,14 +76,16 @@ function paginateVerses(
 }
 
 // Returns the largest font size at which all verses on a page fit within VERSE_AREA_H.
-// Handles the case where a single long verse won't fit at VERSE_PX by scaling down.
+// Handles the case where a single long verse won't fit at the chosen font by scaling down.
 function computePageFontPx(
   verses: VerseData[],
   ctx: CanvasRenderingContext2D,
   maxW: number,
+  lineSpacingPt: number,
+  verseFontPt: number,
 ): number {
-  for (let fontPx = VERSE_PX; fontPx >= MIN_VERSE_PX; fontPx -= 2) {
-    const lineH = Math.round(fontPx * 1.5)
+  for (let fontPx = ptToPx(verseFontPt); fontPx >= MIN_VERSE_PX; fontPx -= 2) {
+    const lineH = ptToPx(lineSpacingPt)
     const verseGap = Math.round(fontPx * 0.5)
     ctx.font = `bold ${fontPx}px ${TAMIL_FONT}`
     let h = 0
@@ -107,7 +111,7 @@ function renderCanvas(
   const { canvasWidth, canvasHeight } = CONFIG
   const maxW = canvasWidth - CONFIG.marginLeft - CONFIG.marginRight
   const centerX = Math.round(canvasWidth / 2)
-  const lineH = Math.round(fontPx * 1.5)
+  const lineH = ptToPx(settings.lineSpacingPt)
   const verseGap = Math.round(fontPx * 0.5)
 
   // Per-page verse range: show only the verses actually on this page
@@ -195,10 +199,16 @@ export function createPages(
   const tmpCtx = tmp.getContext('2d')!
 
   const maxW = CONFIG.canvasWidth - CONFIG.marginLeft - CONFIG.marginRight
-  const pages = paginateVerses(verses, tmpCtx, maxW)
+  const pages = paginateVerses(verses, tmpCtx, maxW, settings.lineSpacingPt, settings.verseFontPt)
 
   return pages.map((pageVerses, i) => {
-    const fontPx = computePageFontPx(pageVerses, tmpCtx, maxW)
+    const fontPx = computePageFontPx(
+      pageVerses,
+      tmpCtx,
+      maxW,
+      settings.lineSpacingPt,
+      settings.verseFontPt,
+    )
     const canvas = document.createElement('canvas')
     canvas.width = CONFIG.canvasWidth
     canvas.height = CONFIG.canvasHeight
