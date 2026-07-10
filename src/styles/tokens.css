@@ -1,0 +1,144 @@
+/*
+ * Design tokens. Colours are OKLCH, fitted to the sRGB gamut and validated for
+ * WCAG 2.1 AA in both themes (body >= 4.5:1, incl. placeholders; ink >= 7:1).
+ *
+ * Brand: deep indigo primary, warm clay accent, neutral surface. The warmth is
+ * in the accent and the spacing — never in the background. See PRODUCT.md.
+ */
+
+:root {
+  /* ---- palette: light (default) ---------------------------------------- */
+  --bg: oklch(1 0 0);
+  --surface: oklch(0.978 0.004 268);
+  --surface-2: oklch(0.958 0.006 268);
+  --border: oklch(0.884 0.009 268);
+  --border-strong: oklch(0.76 0.014 268);
+
+  --ink: oklch(0.24 0.02 268);
+  --muted: oklch(0.505 0.018 268);
+
+  --primary: oklch(0.4 0.145 268);
+  --primary-hover: oklch(0.345 0.15 268);
+  --primary-text: oklch(0.4 0.145 268);
+  --primary-soft: oklch(0.955 0.02 268);
+  --on-primary: oklch(1 0 0);
+
+  --accent: oklch(0.615 0.15 45);
+  --accent-soft: oklch(0.955 0.028 60);
+  --accent-ink: oklch(0.4 0.11 42);
+
+  --danger: oklch(0.505 0.19 25);
+  --danger-soft: oklch(0.96 0.019 25);
+  --danger-ink: oklch(0.41 0.16 25);
+
+  --success: oklch(0.48 0.118 155);
+
+  /* Backdrops for previewing transparent PNGs. Theme-independent on purpose:
+     they stand in for the video the overlay is composited onto, not for the
+     app's own surface. */
+  --checker-a: oklch(0.93 0 0);
+  --checker-b: oklch(0.86 0 0);
+  --stage-dark: oklch(0.19 0.004 268);
+  --stage-light: oklch(0.97 0 0);
+
+  --shadow-sm: 0 1px 2px oklch(0.24 0.02 268 / 0.06);
+  --shadow-md: 0 2px 4px oklch(0.24 0.02 268 / 0.05), 0 6px 16px oklch(0.24 0.02 268 / 0.07);
+  --shadow-lg: 0 8px 24px oklch(0.24 0.02 268 / 0.1), 0 2px 6px oklch(0.24 0.02 268 / 0.06);
+
+  /* ---- type ------------------------------------------------------------ */
+  /* One humanist family in several weights — product register wants no
+     display/body pairing, and the warmth belongs in the letterforms. */
+  --font-ui: 'Source Sans 3', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-tamil: 'Noto Sans Tamil', var(--font-ui);
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Fixed rem scale, ratio ~1.13. Product UI does not want fluid headings.
+     Runs a step larger than an Inter-based scale: Source Sans has a smaller
+     x-height, so 15px here reads like 14px there. */
+  --text-xs: 0.8125rem; /* 13 */
+  --text-sm: 0.875rem; /* 14 */
+  --text-base: 0.9375rem; /* 15 — UI body */
+  --text-md: 1.0625rem; /* 17 — prose */
+  --text-lg: 1.1875rem; /* 19 */
+  --text-xl: 1.375rem; /* 22 */
+  --text-2xl: 1.625rem; /* 26 */
+  --text-3xl: 2rem; /* 32 */
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.6;
+
+  /* ---- space (4px base, varied for rhythm) ----------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-14: 3.5rem;
+  --space-18: 4.5rem;
+
+  /* ---- radius ---------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* ---- z-index: semantic scale, never arbitrary ------------------------ */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+
+  /* ---- motion ---------------------------------------------------------- */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-1: 120ms; /* state echo: hover, press */
+  --dur-2: 180ms; /* the default */
+  --dur-3: 240ms; /* entrances, disclosure */
+
+  --focus-ring: 2px solid var(--primary-text);
+  --focus-offset: 2px;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: oklch(0.15 0 0);
+  --surface: oklch(0.195 0.005 268);
+  --surface-2: oklch(0.24 0.006 268);
+  --border: oklch(0.31 0.01 268);
+  --border-strong: oklch(0.43 0.014 268);
+
+  --ink: oklch(0.95 0.004 268);
+  --muted: oklch(0.72 0.014 268);
+
+  --primary: oklch(0.5 0.16 268);
+  --primary-hover: oklch(0.55 0.16 268);
+  --primary-text: oklch(0.8 0.1 268);
+  --primary-soft: oklch(0.28 0.045 268);
+  --on-primary: oklch(1 0 0);
+
+  --accent: oklch(0.74 0.14 55);
+  --accent-soft: oklch(0.3 0.045 50);
+  --accent-ink: oklch(0.84 0.1 60);
+
+  --danger: oklch(0.64 0.19 25);
+  --danger-soft: oklch(0.29 0.06 25);
+  --danger-ink: oklch(0.83 0.094 25);
+
+  --success: oklch(0.72 0.14 155);
+
+  --checker-a: oklch(0.28 0 0);
+  --checker-b: oklch(0.22 0 0);
+
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.4);
+  --shadow-md: 0 2px 4px oklch(0 0 0 / 0.35), 0 6px 16px oklch(0 0 0 / 0.45);
+  --shadow-lg: 0 8px 24px oklch(0 0 0 / 0.55), 0 2px 6px oklch(0 0 0 / 0.4);
+
+  color-scheme: dark;
+}

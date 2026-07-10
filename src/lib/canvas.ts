@@ -21,8 +21,10 @@ export function withAlpha(hex: string, alpha: number): string {
 }
 
 export const TAMIL_FONT = `'Tharmini', sans-serif`
-const ENGLISH_FONT = `'Roboto', sans-serif`
-const ENGLISH_TITLE_FONT = `Arial, sans-serif`
+// A system face, so the canvas never races a webfont: only Tharmini is
+// explicitly awaited before rendering. Shared by the title and the page number
+// so all English text on a slide is set in one face.
+const ENGLISH_FONT = `Arial, Helvetica, sans-serif`
 
 export function wrapText(
   text: string,
@@ -143,7 +145,7 @@ function renderCanvas(
     settings.titleInset,
     settings.titleY,
   )
-  ctx.font = `${titlePx}px ${ENGLISH_TITLE_FONT}`
+  ctx.font = `${titlePx}px ${ENGLISH_FONT}`
   const engTitle = `${bookInfo.englishBook} ${bookInfo.chapter}:${verseRange}`
   ctx.fillText(
     engTitle,

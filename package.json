@@ -9,9 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mantine/core": "^7.17.4",
-    "@mantine/hooks": "^7.17.4",
-    "@mantine/notifications": "^7.17.4",
     "@tabler/icons-react": "^3.44.0",
     "jszip": "^3.10.1",
     "react": "^19.1.0",
@@ -21,9 +18,6 @@
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.4.1",
-    "postcss": "^8.5.3",
-    "postcss-preset-mantine": "^1.17.0",
-    "postcss-simple-vars": "^7.0.1",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   }

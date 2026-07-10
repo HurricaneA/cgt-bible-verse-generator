@@ -1,22 +1,19 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { MantineProvider, createTheme } from '@mantine/core'
-import { Notifications } from '@mantine/notifications'
-import '@mantine/core/styles.css'
-import '@mantine/notifications/styles.css'
-import './fonts.css'
+import './styles/tokens.css'
+import './styles/base.css'
+import './styles/ui.css'
+import './styles/app.css'
+import { ColorSchemeProvider } from './theme/ColorScheme'
+import { ToastProvider } from './ui/Toast'
 import App from './App'
-
-const theme = createTheme({
-  primaryColor: 'teal',
-  fontFamily: 'Roboto, sans-serif',
-})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MantineProvider theme={theme} defaultColorScheme="auto">
-      <Notifications position="top-right" />
-      <App />
-    </MantineProvider>
+    <ColorSchemeProvider>
+      <ToastProvider>
+        <App />
+      </ToastProvider>
+    </ColorSchemeProvider>
   </StrictMode>,
 )

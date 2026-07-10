@@ -1,15 +1,6 @@
-import {
-  Paper,
-  Stack,
-  Group,
-  Text,
-  Slider,
-  ColorInput,
-  Button,
-  Divider,
-  FileInput,
-} from '@mantine/core'
-import { IconRestore, IconPhotoUp } from '@tabler/icons-react'
+import { IconRestore } from '@tabler/icons-react'
+import { Button } from '../ui/Button'
+import { Slider, ColorField, FileDrop, Disclosure } from '../ui/controls'
 import { LIMITS, type RenderSettings } from '../lib/config'
 import type { OutputMode } from '../types'
 
@@ -22,45 +13,8 @@ interface Props {
   onFramePick: (file: File | null) => void
 }
 
-function SliderField({
-  label,
-  value,
-  unit,
-  min,
-  max,
-  step,
-  onChange,
-  format,
-}: {
-  label: string
-  value: number
-  unit: string
-  min: number
-  max: number
-  step: number
-  onChange: (v: number) => void
-  format?: (v: number) => string
-}) {
-  return (
-    <Stack gap={2}>
-      <Group justify="space-between" gap={4}>
-        <Text size="sm">{label}</Text>
-        <Text size="sm" c="dimmed" ff="monospace">
-          {format ? format(value) : `${value}${unit}`}
-        </Text>
-      </Group>
-      <Slider
-        value={value}
-        onChange={onChange}
-        min={min}
-        max={max}
-        step={step}
-        color="teal"
-        label={null}
-      />
-    </Stack>
-  )
-}
+const TEXT_SWATCHES = ['#ffffff', '#000000', '#ffd43b', '#ff6b6b', '#4dabf7', '#69db7c']
+const BG_SWATCHES = ['#000000', '#ffffff', '#1a1b1e', '#2b2d42', '#0b3d2e', '#3b0d11']
 
 export default function RenderControls({
   settings,
@@ -73,183 +27,174 @@ export default function RenderControls({
   const isLowerThird = mode === 'lowerThird'
 
   return (
-    <Paper withBorder radius="md" p="md">
-      <Stack gap="md">
-        <Group justify="space-between" align="center">
-          <Text fw={600}>Customize</Text>
-          <Button
-            size="compact-xs"
-            variant="subtle"
-            color="gray"
-            leftSection={<IconRestore size={14} />}
-            onClick={reset}
-          >
-            Reset
-          </Button>
-        </Group>
+    <aside className="panel" aria-label="Customise the rendered image">
+      <div className="panel__head">
+        <h3 className="panel__title">Customise</h3>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={reset}
+          leftSection={<IconRestore size={14} aria-hidden="true" />}
+        >
+          Reset
+        </Button>
+      </div>
 
+      <div className="panel__body">
         {isLowerThird ? (
           <>
-            <Divider label="Border image" labelPosition="left" />
-            <FileInput
-              accept="image/*"
-              placeholder="Upload an image…"
-              leftSection={<IconPhotoUp size={16} />}
-              clearable
-              onChange={onFramePick}
-            />
-            {frameName && (
-              <Text size="xs" c="dimmed" truncate>
-                Using: {frameName}
-              </Text>
-            )}
+            <Disclosure title="Border image" defaultOpen>
+              <FileDrop
+                label="Drop an image, or click to browse"
+                hint="Fills the ring around the verse. PNG or JPG."
+                fileName={frameName}
+                onPick={onFramePick}
+              />
+            </Disclosure>
 
-            <Divider label="Box" labelPosition="left" />
-            <SliderField
-              label="Side margin"
-              value={settings.ltSideMargin}
-              unit="px"
-              {...LIMITS.ltSideMargin}
-              onChange={(v) => update('ltSideMargin', v)}
-            />
-            <SliderField
-              label="Bottom margin"
-              value={settings.ltBottomMargin}
-              unit="px"
-              {...LIMITS.ltBottomMargin}
-              onChange={(v) => update('ltBottomMargin', v)}
-            />
-            <SliderField
-              label="Box height"
-              value={settings.ltBoxHeight}
-              unit="px"
-              {...LIMITS.ltBoxHeight}
-              onChange={(v) => update('ltBoxHeight', v)}
-            />
-            <SliderField
-              label="Ring — sides"
-              value={settings.ltBorderSide}
-              unit="px"
-              {...LIMITS.ltBorderSide}
-              onChange={(v) => update('ltBorderSide', v)}
-            />
-            <SliderField
-              label="Ring — top"
-              value={settings.ltBorderTop}
-              unit="px"
-              {...LIMITS.ltBorderTop}
-              onChange={(v) => update('ltBorderTop', v)}
-            />
-            <SliderField
-              label="Ring — bottom"
-              value={settings.ltBorderBottom}
-              unit="px"
-              {...LIMITS.ltBorderBottom}
-              onChange={(v) => update('ltBorderBottom', v)}
-            />
-            <SliderField
-              label="Corner radius"
-              value={settings.ltCornerRadius}
-              unit="px"
-              {...LIMITS.ltCornerRadius}
-              onChange={(v) => update('ltCornerRadius', v)}
-            />
-            <SliderField
-              label="Inner padding"
-              value={settings.ltPadding}
-              unit="px"
-              {...LIMITS.ltPadding}
-              onChange={(v) => update('ltPadding', v)}
-            />
-            <SliderField
-              label="Inner fill opacity"
-              value={settings.ltInnerOpacity}
-              unit=""
-              {...LIMITS.ltInnerOpacity}
-              format={(v) => `${Math.round(v * 100)}%`}
-              onChange={(v) => update('ltInnerOpacity', Math.round(v * 20) / 20)}
-            />
+            <Disclosure title="Box & ring">
+              <Slider
+                label="Side margin"
+                unit="px"
+                value={settings.ltSideMargin}
+                {...LIMITS.ltSideMargin}
+                onChange={(v) => update('ltSideMargin', v)}
+              />
+              <Slider
+                label="Bottom margin"
+                unit="px"
+                value={settings.ltBottomMargin}
+                {...LIMITS.ltBottomMargin}
+                onChange={(v) => update('ltBottomMargin', v)}
+              />
+              <Slider
+                label="Box height"
+                unit="px"
+                value={settings.ltBoxHeight}
+                {...LIMITS.ltBoxHeight}
+                onChange={(v) => update('ltBoxHeight', v)}
+              />
+              <Slider
+                label="Ring — sides"
+                unit="px"
+                value={settings.ltBorderSide}
+                {...LIMITS.ltBorderSide}
+                onChange={(v) => update('ltBorderSide', v)}
+              />
+              <Slider
+                label="Ring — top"
+                unit="px"
+                value={settings.ltBorderTop}
+                {...LIMITS.ltBorderTop}
+                onChange={(v) => update('ltBorderTop', v)}
+              />
+              <Slider
+                label="Ring — bottom"
+                unit="px"
+                value={settings.ltBorderBottom}
+                {...LIMITS.ltBorderBottom}
+                onChange={(v) => update('ltBorderBottom', v)}
+              />
+              <Slider
+                label="Corner radius"
+                unit="px"
+                value={settings.ltCornerRadius}
+                {...LIMITS.ltCornerRadius}
+                onChange={(v) => update('ltCornerRadius', v)}
+              />
+              <Slider
+                label="Inner padding"
+                unit="px"
+                value={settings.ltPadding}
+                {...LIMITS.ltPadding}
+                onChange={(v) => update('ltPadding', v)}
+              />
+              <Slider
+                label="Inner fill opacity"
+                value={settings.ltInnerOpacity}
+                {...LIMITS.ltInnerOpacity}
+                format={(v) => `${Math.round(v * 100)}%`}
+                onChange={(v) => update('ltInnerOpacity', Math.round(v * 20) / 20)}
+              />
+            </Disclosure>
+
+            <Disclosure title="Verse text">
+              <Slider
+                label="Font size"
+                unit="pt"
+                value={settings.ltVerseFontPt}
+                {...LIMITS.ltVerseFontPt}
+                onChange={(v) => update('ltVerseFontPt', v)}
+              />
+              <Slider
+                label="Line spacing"
+                unit="pt"
+                value={settings.ltLineSpacingPt}
+                {...LIMITS.ltLineSpacingPt}
+                onChange={(v) => update('ltLineSpacingPt', v)}
+              />
+            </Disclosure>
           </>
         ) : (
           <>
-            <Divider label="Title" labelPosition="left" />
-            <SliderField
-              label="Inset (from edges)"
-              value={settings.titleInset}
-              unit="px"
-              {...LIMITS.titleInset}
-              onChange={(v) => update('titleInset', v)}
-            />
-            <SliderField
-              label="Font size"
-              value={settings.titleFontPt}
-              unit="pt"
-              {...LIMITS.titleFontPt}
-              onChange={(v) => update('titleFontPt', v)}
-            />
-            <SliderField
-              label="Vertical position"
-              value={settings.titleY}
-              unit="px"
-              {...LIMITS.titleY}
-              onChange={(v) => update('titleY', v)}
-            />
+            <Disclosure title="Title" defaultOpen>
+              <Slider
+                label="Inset from edges"
+                unit="px"
+                value={settings.titleInset}
+                {...LIMITS.titleInset}
+                onChange={(v) => update('titleInset', v)}
+              />
+              <Slider
+                label="Font size"
+                unit="pt"
+                value={settings.titleFontPt}
+                {...LIMITS.titleFontPt}
+                onChange={(v) => update('titleFontPt', v)}
+              />
+              <Slider
+                label="Vertical position"
+                unit="px"
+                value={settings.titleY}
+                {...LIMITS.titleY}
+                onChange={(v) => update('titleY', v)}
+              />
+            </Disclosure>
+
+            <Disclosure title="Verse text" defaultOpen>
+              <Slider
+                label="Font size"
+                unit="pt"
+                value={settings.verseFontPt}
+                {...LIMITS.verseFontPt}
+                onChange={(v) => update('verseFontPt', v)}
+              />
+              <Slider
+                label="Line spacing"
+                unit="pt"
+                value={settings.lineSpacingPt}
+                {...LIMITS.lineSpacingPt}
+                onChange={(v) => update('lineSpacingPt', v)}
+              />
+            </Disclosure>
           </>
         )}
 
-        <Divider label="Verses" labelPosition="left" />
-        {isLowerThird ? (
-          <>
-            <SliderField
-              label="Font size"
-              value={settings.ltVerseFontPt}
-              unit="pt"
-              {...LIMITS.ltVerseFontPt}
-              onChange={(v) => update('ltVerseFontPt', v)}
-            />
-            <SliderField
-              label="Line spacing"
-              value={settings.ltLineSpacingPt}
-              unit="pt"
-              {...LIMITS.ltLineSpacingPt}
-              onChange={(v) => update('ltLineSpacingPt', v)}
-            />
-          </>
-        ) : (
-          <>
-            <SliderField
-              label="Font size"
-              value={settings.verseFontPt}
-              unit="pt"
-              {...LIMITS.verseFontPt}
-              onChange={(v) => update('verseFontPt', v)}
-            />
-            <SliderField
-              label="Line spacing"
-              value={settings.lineSpacingPt}
-              unit="pt"
-              {...LIMITS.lineSpacingPt}
-              onChange={(v) => update('lineSpacingPt', v)}
-            />
-          </>
-        )}
-
-        <Divider label="Colours" labelPosition="left" />
-        <ColorInput
-          label="Text colour"
-          format="hex"
-          value={settings.textColor}
-          onChange={(v) => update('textColor', v)}
-          swatches={['#ffffff', '#000000', '#ffd43b', '#ff6b6b', '#4dabf7', '#69db7c']}
-        />
-        <ColorInput
-          label={isLowerThird ? 'Inner fill colour' : 'Background colour'}
-          format="hex"
-          value={settings.bgColor}
-          onChange={(v) => update('bgColor', v)}
-          swatches={['#000000', '#ffffff', '#1a1b1e', '#2b2d42', '#0b3d2e', '#3b0d11']}
-        />
-      </Stack>
-    </Paper>
+        <Disclosure title="Colours">
+          <ColorField
+            label="Text colour"
+            value={settings.textColor}
+            onChange={(v) => update('textColor', v)}
+            swatches={TEXT_SWATCHES}
+          />
+          <ColorField
+            label={isLowerThird ? 'Inner fill colour' : 'Background colour'}
+            value={settings.bgColor}
+            onChange={(v) => update('bgColor', v)}
+            swatches={BG_SWATCHES}
+          />
+        </Disclosure>
+      </div>
+    </aside>
   )
 }

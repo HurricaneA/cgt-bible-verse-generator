@@ -1,0 +1,594 @@
+/* App shell + the three-step flow. */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: color-mix(in oklch, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header__inner {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-right: auto;
+  min-width: 0;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: var(--on-primary);
+  font-family: var(--font-tamil);
+  font-size: var(--text-lg);
+  line-height: 1;
+  /* The Tamil letter "ba" — the app's only ornament, and it's a glyph. */
+  padding-bottom: 2px;
+}
+
+.brand__name {
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding: var(--space-8) var(--space-5) var(--space-18);
+}
+
+/* Narrow: the mark alone carries the brand, so the tabs keep one line. Clipped
+   rather than `display: none` — the mark is aria-hidden, so this text is the
+   header's only accessible name. */
+@media (max-width: 40rem) {
+  .brand__name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .app-header__inner {
+    gap: var(--space-2);
+    padding-inline: var(--space-4);
+  }
+
+  .main {
+    padding-inline: var(--space-4);
+  }
+
+  .step {
+    grid-template-columns: 1.75rem 1fr;
+    gap: var(--space-3);
+  }
+}
+
+/* ---- step scaffold ------------------------------------------------------
+ * These numbers are not decoration: the work genuinely is a three-step
+ * sequence, and the rail shows how far along you are.
+ */
+
+.step {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--space-5);
+}
+
+.step__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.step__number {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: var(--text-sm);
+  font-weight: 620;
+  font-variant-numeric: tabular-nums;
+  transition:
+    background-color var(--dur-2) var(--ease-out-quart),
+    border-color var(--dur-2) var(--ease-out-quart),
+    color var(--dur-2) var(--ease-out-quart);
+}
+
+.step[data-state='active'] .step__number {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.step[data-state='done'] .step__number {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+
+.step__line {
+  flex: 1;
+  width: 1px;
+  min-height: var(--space-4);
+  background: var(--border);
+}
+
+.step__body {
+  padding-bottom: var(--space-10);
+  min-width: 0;
+}
+
+.step:last-child .step__body {
+  padding-bottom: 0;
+}
+
+.step__title {
+  font-size: var(--text-lg);
+  margin-top: 3px;
+}
+
+.step__desc {
+  margin-top: var(--space-1);
+  font-size: var(--text-base);
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.step__content {
+  margin-top: var(--space-5);
+}
+
+/* A step you haven't reached yet is marked on the rail only. Dimming its text
+   would drop body copy below 4.5:1 — the empty state carries the meaning. */
+.step__rail {
+  align-self: stretch;
+}
+
+/* ---- format chooser ----------------------------------------------------- */
+
+.formats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  gap: var(--space-4);
+  max-width: 46rem;
+}
+
+.format {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-2) var(--ease-out-quart),
+    background-color var(--dur-2) var(--ease-out-quart);
+}
+
+.format:hover {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.format:has(input:checked) {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.format:has(input:focus-visible) {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.format__name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.format__desc {
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+
+/* Miniature of the actual output — the choice is previewed as the artifact. */
+.format__thumb {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: oklch(0.18 0 0);
+  position: relative;
+  overflow: hidden;
+  flex: none;
+}
+
+.format__thumb--slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px;
+}
+
+.format__thumb--lt {
+  background:
+    repeating-conic-gradient(var(--checker-a) 0% 25%, var(--checker-b) 0% 50%) 50% / 12px 12px;
+  display: flex;
+  align-items: flex-end;
+  padding: 6px;
+}
+
+.format__bar {
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: oklch(1 0 0 / 0.85);
+}
+
+.format__ltbox {
+  width: 100%;
+  height: 42%;
+  border-radius: 4px;
+  border: 2px solid var(--accent);
+  background: oklch(0 0 0 / 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  padding: 5px;
+}
+
+/* ---- passage picker ----------------------------------------------------- */
+
+/* Capped: four selects stretched across a 76rem container read as a form to
+   fill in, not a choice to make. */
+.passage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  align-items: start;
+  max-width: 56rem;
+}
+
+@media (max-width: 46rem) {
+  .passage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .passage-grid > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.passage-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.passage-summary {
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+.passage-summary strong {
+  color: var(--ink);
+  font-weight: 550;
+}
+
+/* ---- export step: preview stage + controls ------------------------------ */
+
+.export {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 64rem) {
+  .export {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.stage__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.stage__count {
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+.sheet {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.sheet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.sheet__ref {
+  font-size: var(--text-sm);
+  font-weight: 550;
+}
+
+.sheet__file {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sheet__actions {
+  display: flex;
+  gap: var(--space-1);
+  flex: none;
+}
+
+/* A transparent overlay has no inherent background: it takes on whatever video
+   sits behind it. The stage lets you check legibility against each case, and
+   defaults to dark because that's what most footage looks like. Previewing on
+   the app's own light surface would hide white text entirely. */
+.sheet__canvas {
+  padding: var(--space-4);
+  background: var(--surface-2);
+}
+
+.sheet__canvas[data-backdrop='dark'] {
+  background: var(--stage-dark);
+}
+
+.sheet__canvas[data-backdrop='light'] {
+  background: var(--stage-light);
+}
+
+.sheet__canvas[data-backdrop='checker'] {
+  background:
+    repeating-conic-gradient(var(--checker-a) 0% 25%, var(--checker-b) 0% 50%) 50% / 20px 20px;
+}
+
+.sheet__canvas img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+.stage__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.stage__note {
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+
+/* ---- controls panel ----------------------------------------------------- */
+
+.panel {
+  position: sticky;
+  top: 4.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  /* Not overflow:hidden — the colour picker and combobox must escape. */
+}
+
+/* Once the panel stacks under the preview it is no longer a rail: pinning it
+   and giving it its own scrollbar would trap the page scroll. */
+@media (max-width: 64rem) {
+  .panel {
+    position: static;
+  }
+
+  .panel__body {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+.panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.panel__title {
+  font-size: var(--text-sm);
+  font-weight: 620;
+}
+
+.panel__body {
+  padding: 0 var(--space-4);
+  max-height: calc(100dvh - 12rem);
+  overflow-y: auto;
+}
+
+/* ---- empty + loading states --------------------------------------------- */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-14) var(--space-5);
+  max-width: 52rem;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.empty__icon {
+  color: var(--muted);
+}
+
+.empty__title {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.empty__body {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+.empty__list {
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-align: left;
+}
+
+.empty__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.empty__list code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+/* ---- converter ---------------------------------------------------------- */
+
+.converter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.converter__panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+@media (max-width: 46rem) {
+  .converter__panes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.pane__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 2rem;
+}
+
+.pane__label {
+  font-size: var(--text-sm);
+  font-weight: 550;
+}
+
+.pane__area {
+  width: 100%;
+  min-height: 14rem;
+  padding: var(--space-3);
+  resize: vertical;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+}
+
+.pane__area:read-only {
+  background: var(--surface);
+}
+
+.pane__area::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.prose {
+  font-size: var(--text-base);
+  color: var(--muted);
+  max-width: 68ch;
+}
