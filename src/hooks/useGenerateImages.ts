@@ -2,8 +2,22 @@ import { useState, useCallback, useRef } from 'react'
 import { tamilBookNames, tamilBookNamesLegacy } from '../lib/bible-data'
 import { lookupVerses } from '../lib/lookup-verses'
 import { createPages } from '../lib/canvas'
-import type { RenderSettings } from '../lib/config'
-import type { BookInfo, VerseData, GenerateState } from '../types'
+import { createLowerThirdPages } from '../lib/lower-third'
+import { DEFAULT_SETTINGS, type RenderSettings } from '../lib/config'
+import type { BookInfo, VerseData, GenerateState, RenderOptions } from '../types'
+
+const DEFAULT_OPTS: RenderOptions = { outputMode: 'slide', frame: null }
+
+function renderPages(
+  verses: VerseData[],
+  bookInfo: BookInfo,
+  settings: RenderSettings,
+  opts: RenderOptions,
+) {
+  return opts.outputMode === 'lowerThird'
+    ? createLowerThirdPages(verses, bookInfo, settings, opts.frame)
+    : createPages(verses, bookInfo, settings)
+}
 
 function parseReference(input: string) {
   const match = input.replace(/\./g, ':').match(/([a-zA-Z0-9 ]+) (\d+):(\d+)(?:-(\d+))?/)
@@ -37,7 +51,8 @@ export function useGenerateImages() {
   // the images without re-fetching.
   const lastRef = useRef<{ verses: VerseData[]; bookInfo: BookInfo } | null>(null)
 
-  const generate = useCallback(async (input: string, settings?: RenderSettings) => {
+  const generate = useCallback(
+    async (input: string, settings?: RenderSettings, opts: RenderOptions = DEFAULT_OPTS) => {
     const trimmed = input.trim()
     if (!trimmed) return
 
@@ -108,18 +123,21 @@ export function useGenerateImages() {
     ])
 
     lastRef.current = { verses, bookInfo }
-    const pages = createPages(verses, bookInfo, settings)
+    const pages = renderPages(verses, bookInfo, settings ?? DEFAULT_SETTINGS, opts)
     setState({ status: 'done', error: null, pages, bookInfo })
   }, [])
 
-  // Re-render the current verses with new settings (no re-fetch). Fonts are
-  // already loaded from the initial generate, so this is synchronous.
-  const rerender = useCallback((settings: RenderSettings) => {
-    const last = lastRef.current
-    if (!last) return
-    const pages = createPages(last.verses, last.bookInfo, settings)
-    setState((s) => (s.status === 'done' ? { ...s, pages } : s))
-  }, [])
+  // Re-render the current verses with new settings/options (no re-fetch). Fonts
+  // are already loaded from the initial generate, so this is synchronous.
+  const rerender = useCallback(
+    (settings: RenderSettings, opts: RenderOptions = DEFAULT_OPTS) => {
+      const last = lastRef.current
+      if (!last) return
+      const pages = renderPages(last.verses, last.bookInfo, settings, opts)
+      setState((s) => (s.status === 'done' ? { ...s, pages } : s))
+    },
+    [],
+  )
 
   const reset = useCallback(() => setState(IDLE), [])
 

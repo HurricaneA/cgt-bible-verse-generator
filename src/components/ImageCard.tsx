@@ -1,15 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { Paper, SimpleGrid, Button, Text } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
-import type { GeneratedPage } from '../types'
+import { pageFileName } from '../lib/filename'
+import type { GeneratedPage, BookInfo } from '../types'
 
 interface Props {
   page: GeneratedPage
+  bookInfo: BookInfo
   index: number
   total: number
 }
 
-export default function ImageCard({ page, index, total }: Props) {
+export default function ImageCard({ page, bookInfo, index, total }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function ImageCard({ page, index, total }: Props) {
 
   function handleDownload() {
     const link = document.createElement('a')
-    link.download = total > 1 ? `bible-verse-${index + 1}.png` : 'bible-verse.png'
+    link.download = pageFileName(bookInfo, page, index, total)
     link.href = page.dataUrl
     link.click()
   }

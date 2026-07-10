@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import {
   Container,
   Title,
@@ -9,6 +9,7 @@ import {
   Loader,
   Text,
   Tabs,
+  SegmentedControl,
   ActionIcon,
   useMantineColorScheme,
   useComputedColorScheme,
@@ -16,6 +17,7 @@ import {
 import { IconSun, IconMoon, IconPhoto, IconLanguage } from '@tabler/icons-react'
 import { useGenerateImages } from './hooks/useGenerateImages'
 import { useRenderSettings } from './hooks/useRenderSettings'
+import type { OutputMode } from './types'
 import ReferenceInput from './components/ReferenceInput'
 import ImageCard from './components/ImageCard'
 import BulkDownload from './components/BulkDownload'
@@ -40,13 +42,32 @@ function ColorSchemeToggle() {
 export default function App() {
   const { state, generate, rerender } = useGenerateImages()
   const { settings, update, reset } = useRenderSettings()
+  const [outputMode, setOutputMode] = useState<OutputMode>('slide')
+  const [frame, setFrame] = useState<HTMLImageElement | null>(null)
+  const [frameName, setFrameName] = useState<string | null>(null)
   const isLoading = state.status === 'fetching' || state.status === 'rendering'
 
-  // Live re-render the current image when a setting changes (no re-fetch).
+  const handleFramePick = useCallback((file: File | null) => {
+    if (!file) {
+      setFrame(null)
+      setFrameName(null)
+      return
+    }
+    const url = URL.createObjectURL(file)
+    const img = new Image()
+    img.onload = () => {
+      setFrame(img)
+      URL.revokeObjectURL(url)
+    }
+    img.src = url
+    setFrameName(file.name)
+  }, [])
+
+  // Live re-render the current image when a setting/mode/frame changes (no re-fetch).
   useEffect(() => {
-    if (state.status === 'done') rerender(settings)
+    if (state.status === 'done') rerender(settings, { outputMode, frame })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings])
+  }, [settings, outputMode, frame])
 
   return (
     <Container size="lg" py={{ base: 24, sm: 48 }} px={{ base: 16, sm: 24 }}>
@@ -71,8 +92,18 @@ export default function App() {
           <Tabs.Panel value="generator">
             <Stack align="center" gap="xl">
               <ReferenceInput
-                onGenerate={(ref) => generate(ref, settings)}
+                onGenerate={(ref) => generate(ref, settings, { outputMode, frame })}
                 disabled={isLoading}
+              />
+
+              <SegmentedControl
+                value={outputMode}
+                onChange={(v) => setOutputMode(v as OutputMode)}
+                color="teal"
+                data={[
+                  { label: 'Full slide', value: 'slide' },
+                  { label: 'Lower third', value: 'lowerThird' },
+                ]}
               />
 
               {state.status === 'fetching' && (
@@ -116,6 +147,7 @@ export default function App() {
                         <ImageCard
                           key={i}
                           page={page}
+                          bookInfo={state.bookInfo!}
                           index={i}
                           total={state.pages.length}
                         />
@@ -128,6 +160,9 @@ export default function App() {
                         settings={settings}
                         update={update}
                         reset={reset}
+                        mode={outputMode}
+                        frameName={frameName}
+                        onFramePick={handleFramePick}
                       />
                     </div>
                   </Grid.Col>

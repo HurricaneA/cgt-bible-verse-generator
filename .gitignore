@@ -1,2 +1,10 @@
 node_modules/
 dist/
+
+# Impeccable design skill — local tooling, installed per-machine, not app code
+.claude/skills/impeccable/
+.github/skills/impeccable/
+.github/hooks/impeccable.json
+
+# Claude Code machine-local settings (wires up the impeccable hook)
+.claude/settings.local.json

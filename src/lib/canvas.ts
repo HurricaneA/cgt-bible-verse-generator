@@ -13,18 +13,18 @@ import type { VerseData, BookInfo, GeneratedPage } from '../types'
 const MIN_VERSE_PX = 36
 
 /** #rrggbb -> rgba(...) with the given alpha (for the separator / page number). */
-function withAlpha(hex: string, alpha: number): string {
+export function withAlpha(hex: string, alpha: number): string {
   const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim())
   if (!m) return hex
   const n = parseInt(m[1], 16)
   return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`
 }
 
-const TAMIL_FONT = `'Tharmini', sans-serif`
+export const TAMIL_FONT = `'Tharmini', sans-serif`
 const ENGLISH_FONT = `'Roboto', sans-serif`
 const ENGLISH_TITLE_FONT = `Arial, sans-serif`
 
-function wrapText(
+export function wrapText(
   text: string,
   maxWidth: number,
   ctx: CanvasRenderingContext2D,
@@ -213,6 +213,11 @@ export function createPages(
     canvas.width = CONFIG.canvasWidth
     canvas.height = CONFIG.canvasHeight
     renderCanvas(canvas, pageVerses, i + 1, pages.length, bookInfo, fontPx, settings)
-    return { canvas, dataUrl: canvas.toDataURL('image/png') }
+    return {
+      canvas,
+      dataUrl: canvas.toDataURL('image/png'),
+      startVerse: pageVerses[0].verse,
+      endVerse: pageVerses[pageVerses.length - 1].verse,
+    }
   })
 }

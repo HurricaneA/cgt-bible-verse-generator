@@ -1,6 +1,7 @@
 import JSZip from 'jszip'
 import { Button } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
+import { pageFileName } from '../lib/filename'
 import type { GeneratedPage, BookInfo } from '../types'
 
 interface Props {
@@ -14,10 +15,10 @@ export default function BulkDownload({ pages, bookInfo }: Props) {
 
     await Promise.all(
       pages.map(
-        ({ canvas }, i) =>
+        (page, i) =>
           new Promise<void>((resolve) =>
-            canvas.toBlob((blob) => {
-              zip.file(`image-${i + 1}.png`, blob!)
+            page.canvas.toBlob((blob) => {
+              zip.file(pageFileName(bookInfo, page, i, pages.length), blob!)
               resolve()
             }),
           ),
